@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, StrictInt
 
 from evoting.protocol.authority import Authority
 from evoting.protocol.ballot_box import BallotBox
@@ -12,11 +12,11 @@ from evoting.storage.db import Store
 
 class CreateElection(BaseModel):
     question: str
-    n_max: int
+    n_max: StrictInt
 
 
 class IssueTokens(BaseModel):
-    count: int
+    count: StrictInt
 
 
 def create_app(db_path: str) -> FastAPI:

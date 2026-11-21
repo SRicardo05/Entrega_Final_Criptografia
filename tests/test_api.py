@@ -76,3 +76,16 @@ def test_api_deep_nesting_is_400_format(tmp_path):
     deep = "[" * 2000 + "]" * 2000
     r = c.post("/urna/ballots", content=deep, headers=hdr)
     assert r.status_code == 400 and r.json()["step"] == "FORMAT"
+
+
+def test_api_strict_int_rejects_bool_and_str(tmp_path):
+    c, p, _ = _setup(tmp_path)
+    eid = p["election_id"]
+    for bad_n_max in (True, False, "10", "2"):
+        r = c.post("/admin/elections", json={"question": "q", "n_max": bad_n_max})
+        assert r.status_code == 422
+    for bad_count in (True, False, "2", "0"):
+        r = c.post(f"/admin/elections/{eid}/tokens", json={"count": bad_count})
+        assert r.status_code == 422
+    assert c.post("/admin/elections", json={"question": "q", "n_max": 0}).status_code == 400
+    assert c.post(f"/admin/elections/{eid}/tokens", json={"count": -1}).status_code == 400
