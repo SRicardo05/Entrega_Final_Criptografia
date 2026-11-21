@@ -1,0 +1,26 @@
+# --- Python / herramientas ---
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+
+# --- Artefactos de ejecución con secretos o estado local ---
+*.db
+token_*.json
+
+# --- Archivos ajenos a la implementación (configuración de agentes y proceso de desarrollo) ---
+.claude/
+CLAUDE.md
+.superpowers/
+docs/superpowers/
+10_Votacion_Jimenez_Ricardo_Evaluacion.md
+
+# --- Editor / sistema operativo ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Se versionan como evidencia: README.md, docs/especificacion.md,
+# Criptografia_PF_Entrega1.pdf, results/ (métricas) y expediente*.json (auditorías).
