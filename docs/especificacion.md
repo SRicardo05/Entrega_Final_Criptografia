@@ -36,7 +36,7 @@ Ed25519 tiene cofactor 8, así que la curva completa no es un grupo de orden pri
 - Los escalares aleatorios son `int_LE(os.urandom(64)) mod L`, repitiendo el sorteo si sale 0.
 - `Point.__add__` y `__sub__` tratan la identidad y `P - P` aparte, para mayor claridad y para no depender del comportamiento de la biblioteca con esos casos.
 
-## 2. Validación de elementos inválidos (corrección 3)
+## 2. Validación de elementos inválidos
 
 Todo punto que llega de fuera (ballot, prueba, parámetros, expediente) se decodifica con `Point.from_hex`, que exige:
 
@@ -50,7 +50,7 @@ Todo escalar se decodifica con `Scalar.from_hex`: hex minúscula de 64 caractere
 
 Un elemento inválido en un ballot se rechaza en el paso 2 `ELEMENTS` (sección 5), antes de evaluar ninguna ecuación de la prueba.
 
-## 3. Cifrado y prueba OR (corrección 1)
+## 3. Cifrado y prueba OR 
 
 ### 3.1 ElGamal exponencial
 
