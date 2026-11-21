@@ -2,6 +2,8 @@
 
 Prototipo de votación de aula (hasta 20 votantes), estilo Helios. Los votos `v ∈ {0,1}` se cifran con ElGamal exponencial sobre el subgrupo primo de Ed25519, cada ballot lleva una prueba OR de Cramer–Damgård–Schoenmakers (Fiat–Shamir), la urna suma los ballots sin descifrarlos y un verificador offline audita el expediente firmado.
 
+**¿Primera vez? Sigue la [guía de uso paso a paso](docs/GUIA_DE_USO.md):** instalación, pruebas, demo, verificación, flujo HTTP y métricas, con salidas de ejemplo.
+
 La especificación completa (suite criptográfica, ecuaciones, transcript, pasos de rechazo, formatos y límites de la garantía) está en [`docs/especificacion.md`](docs/especificacion.md).
 
 ## Requisitos
@@ -55,7 +57,7 @@ Un token solo sirve una vez; un segundo voto con el mismo token se rechaza en el
 python -m evoting bench --out results --repeats 5
 ```
 
-Mide, para 1, 5, 10 y 20 votos, el tamaño del ballot, el tiempo de creación, el tiempo de verificación por voto y el tiempo total de auditoría (mediana de las repeticiones). Imprime la tabla Markdown y escribe `results/metrics.md` y `results/metrics.csv` (`results/` no se versiona; la tabla de referencia está en la sección 10 de la especificación).
+Mide, para 1, 5, 10 y 20 votos, el tamaño del ballot, el tiempo de creación, el tiempo de verificación por voto y el tiempo total de auditoría (mediana de las repeticiones). Imprime la tabla Markdown y escribe `results/metrics.md` y `results/metrics.csv` (los resultados de referencia de la entrega están versionados en `results/` y en la sección 10 de la especificación).
 
 ## Estructura
 
@@ -70,5 +72,5 @@ evoting/
   bench.py    mediciones
   __main__.py CLI (serve, admin, vote, verify, demo, bench)
 tests/        pruebas con pytest
-docs/         especificacion.md
+docs/         especificacion.md, GUIA_DE_USO.md
 ```
