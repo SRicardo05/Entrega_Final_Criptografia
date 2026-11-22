@@ -1,3 +1,5 @@
+# Integrantes: Samuel Ricardo y Álvaro Jiménez
+
 # Votación electrónica binaria con ElGamal exponencial y prueba OR
 
 Prototipo de votación de aula (hasta 20 votantes), estilo Helios. Los votos `v ∈ {0,1}` se cifran con ElGamal exponencial sobre el subgrupo primo de Ed25519, cada ballot lleva una prueba OR de Cramer–Damgård–Schoenmakers (Fiat–Shamir), la urna suma los ballots sin descifrarlos y un verificador offline audita el expediente firmado.
