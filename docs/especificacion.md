@@ -254,7 +254,7 @@ Con las ocho claves de `proof` en hex de 64 caracteres. En el estado actual el b
 
 `signature` es la firma Ed25519 (64 bytes, 128 hex) sobre los bytes JCS del expediente **sin** el campo `signature`, con la clave `params.authority_verify_key`.
 
-## 8. Verificador y límite de la garantía (corrección 2)
+## 8. Verificador y límite de la garantía
 
 El verificador (`evoting/protocol/verifier.py`, comando `python -m evoting verify`) funciona sin conexión y lee solo el archivo del expediente. Reporta dos partes **por separado**.
 
